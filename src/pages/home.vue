@@ -1,7 +1,8 @@
 <template>
   <h1>这是首页</h1>
+  <TodoList />
 </template>
 
-<script setup></script>
-
-<style lang="scss" scoped></style>
+<script setup>
+import TodoList from '../components/TodoList.vue';
+</script>
