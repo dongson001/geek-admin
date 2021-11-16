@@ -15,15 +15,27 @@
     </div>
 
     x1:{{ x }} y:{{ y }}
+
+    <h1 @click="toggle">click</h1>
   </div>
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
+import { ref, computed, watchEffect } from 'vue';
 import { useMouse } from '../utils/mouse';
+
+function useStorage(name, value = []) {
+  let data = ref(JSON.parse(localStorage.getItem(name) || value));
+  watchEffect(() => {
+    localStorage.setItem(name, JSON.stringify(data.value));
+  });
+  return data;
+}
+
 function useTodos() {
   let title = ref('');
-  let todos = ref([{ title: '学习Vue', done: false }]);
+  // let todos = ref([{ title: '学习Vue', done: false }]);
+  let todos = useStorage('todos', []);
 
   function addTodo() {
     todos.value.push({ title: title.value, done: false });
@@ -51,4 +63,13 @@ function useTodos() {
 
 let { x, y } = useMouse();
 const { title, todos, addTodo, clear, active, all, allDone } = useTodos();
+
+import useFavicon from './model/useFavicon';
+let { favicon } = useFavicon();
+function loading() {
+  favicon.value = '/geek.png';
+}
+
+import { useFullscreen } from '@vueuse/core';
+const { isFullscreen, enter, exit, toggle } = useFullscreen();
 </script>
