@@ -16,7 +16,7 @@
 
     x1:{{ x }} y:{{ y }}
 
-    <h1 @click="toggle">click</h1>
+    <h1 @click="toggle">click1</h1>
   </div>
 </template>
 
@@ -64,7 +64,7 @@ function useTodos() {
 let { x, y } = useMouse();
 const { title, todos, addTodo, clear, active, all, allDone } = useTodos();
 
-import useFavicon from './model/useFavicon';
+import useFavicon from '../utils/favicon';
 let { favicon } = useFavicon();
 function loading() {
   favicon.value = '/geek.png';
