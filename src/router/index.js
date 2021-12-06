@@ -1,4 +1,5 @@
-import { createWebHashHistory, createRouter } from "vue-router";
+// import { createWebHashHistory, createRouter } from "vue-router";
+import { createWebHashHistory, createRouter } from "./grouter";
 
 import Home from "../pages/home.vue";
 import About from "../pages/about.vue";
