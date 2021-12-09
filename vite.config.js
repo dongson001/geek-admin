@@ -1,7 +1,7 @@
 const path = require('path');
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
-// import vueJsx from '@vitejs/plugin-vue-jsx';
+import vueJsx from '@vitejs/plugin-vue-jsx';
 function resolve(dir) {
   return path.join(__dirname, dir);
 }
@@ -11,10 +11,7 @@ export default defineConfig({
     port: 9094,
     host: '0.0.0.0',
   },
-  plugins: [
-    vue(),
-    // vueJsx()
-  ],
+  plugins: [vue(), vueJsx()],
 
   resolve: {
     extensions: ['.js', '.vue', '.json', 'jsx'],
