@@ -9,7 +9,7 @@
 <script setup>
 import { computed } from 'vue';
 // import { useStore } from 'vuex';
-import { useStore } from '../sotre/gvuex';
+import { useStore } from '../store/gvuex';
 let store = useStore();
 let count = computed(() => store.state.count);
 function add() {
