@@ -48,7 +48,23 @@
   </el-container>
 </template>
 
-<script setup></script>
+<script setup>
+import { watch } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
+const route = useRoute();
+console.log(route);
+const router = useRouter();
+console.log(router.currentRoute.value);
+watch(
+  () => router,
+  (newValue, oldValue) => {
+    console.log(newValue.currentRoute.value, '新的路由');
+    console.log(newValue.currentRoute.value, '旧的路由');
+  },
+  { immediate: true }
+);
+console.log(router);
+</script>
 
 <style scoped>
 .el-header,

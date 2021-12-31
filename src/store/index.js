@@ -1,5 +1,6 @@
-import { createStore } from 'vuex'
+import { createStore } from 'vuex';
 // import { createStore } from './gvuex';
+import { login } from '../api/user';
 
 const store = createStore({
   state() {
@@ -19,6 +20,11 @@ const store = createStore({
   },
   actions: {
     asyncAdd({ commit }) {
+      setTimeout(() => {
+        commit('add');
+      }, 1000);
+    },
+    login({ commit }) {
       setTimeout(() => {
         commit('add');
       }, 1000);
