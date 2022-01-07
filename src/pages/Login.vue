@@ -26,6 +26,11 @@
 
 <script setup>
 import { ref } from 'vue';
+import { useStore } from 'vuex';
+import { useRouter } from 'vue-router';
+import { setToken } from '../utils/utils';
+const store = useStore();
+const router = useRouter();
 let formRef = ref(null);
 let ruleForm = ref({
   userName: '',
@@ -39,6 +44,13 @@ const submitForm = function () {
   formRef.value.validate(async (valid) => {
     console.log(valid);
     if (valid) {
+      const { code, data } = await store.dispatch('login', ruleForm.value);
+      if (code === 0) {
+        setToken(data)
+        router.replace('/');
+      } else {
+        message({ message: '登录失败', type: 'error' });
+      }
     } else {
     }
   });

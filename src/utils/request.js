@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { getToken } from './utils';
 
+
 const instance = axios.create({
   baseURL: '',
   timeout: 5000,
@@ -10,8 +11,8 @@ instance.interceptors.request.use(
   (config) => {
     // config是请求
     // 1.获取token，从user模块中获取
-    const { token } = getToken();
-    if (token) config.headers.Authorization = token;
+    // const { token } = getToken();
+    // if (token) config.headers.Authorization = token;
     return config; // 加上token再把请求return出去
   },
   (e) => Promise.reject(e)

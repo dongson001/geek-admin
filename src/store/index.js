@@ -24,10 +24,8 @@ const store = createStore({
         commit('add');
       }, 1000);
     },
-    login({ commit }) {
-      setTimeout(() => {
-        commit('add');
-      }, 1000);
+    login({ commit }, payload) {
+      return login(payload);
     },
   },
 });
